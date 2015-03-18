@@ -116,7 +116,7 @@
 	<View
 		android:layout_height="match_parent"
 		android:background="?android:attr/dividerHorizontal"
-		android:layout_width="3dp"
+		android:layout_width="5dp"
 		android:id="@+id/mainView3"
 		android:layout_below="@id/mainView2"
 		android:layout_centerHorizontal="true"/>
@@ -132,7 +132,8 @@
 		android:layout_toStartOf="@id/mainView3"
 		android:textColor="#FFFFFF"
 		android:background="#EE4400"
-		android:id="@+id/mainTextView5"/>
+		android:id="@+id/mainTextView5"
+		android:layout_toLeftOf="@id/mainView3"/>
 
 	<TextView
 		android:layout_height="wrap_content"
@@ -145,7 +146,8 @@
 		android:gravity="center"
 		android:textColor="#FFFFFF"
 		android:background="#22AA00"
-		android:id="@+id/mainTextView6"/>
+		android:id="@+id/mainTextView6"
+		android:layout_toRightOf="@id/mainView3"/>
 
 	<ListView
 		android:layout_height="wrap_content"
@@ -154,7 +156,8 @@
 		android:layout_alignParentLeft="true"
 		android:layout_toStartOf="@id/mainView3"
 		android:dividerHeight="3dp"
-		android:id="@+id/lvBorrow"/>
+		android:id="@+id/lvBorrow"
+		android:layout_toLeftOf="@id/mainView3"/>
 
 	<ListView
 		android:layout_height="wrap_content"
@@ -163,7 +166,8 @@
 		android:layout_alignParentRight="true"
 		android:layout_toEndOf="@id/mainView3"
 		android:dividerHeight="3dp"
-		android:id="@+id/lvLend"/>
+		android:id="@+id/lvLend"
+		android:layout_toRightOf="@id/mainView3"/>
 
 </RelativeLayout>
 
