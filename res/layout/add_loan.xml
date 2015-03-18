@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="center">
+
+	<Spinner
+		android:layout_height="wrap_content"
+		android:id="@+id/spinner"
+		android:entries="@array/spinner"
+		android:layout_width="match_parent"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:inputType="textPersonName"
+		android:hint="Name"
+		android:id="@+id/etName"
+		android:textColor="#000000"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:inputType="numberDecimal"
+		android:layout_width="match_parent"
+		android:hint="Amount"
+		android:id="@+id/etAmount"
+		android:textColor="#000000"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:hint="Reason"
+		android:inputType="textLongMessage"
+		android:id="@+id/etReason"
+		android:textColor="#000000"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:inputType="textPassword"
+		android:ems="10"
+		android:layout_width="wrap_content"
+		android:id="@+id/etPass"
+		android:hint="Password"
+		android:textColor="#9F002C"/>
+
+</LinearLayout>
+

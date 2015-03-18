@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">LoanBook</string>
-
+	<string-array name="spinner">
+		<item>Lending to</item>
+		<item>Borrowing from</item>
+	</string-array>
 </resources>
