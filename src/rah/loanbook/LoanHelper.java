@@ -55,7 +55,7 @@ public class LoanHelper
 		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
 		inflate(R.layout.add_loan,null);
 		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
-		dialog.setTitle("Enter Password");
+		dialog.setTitle("Add new");
 		dialog.setView(v);
 		loanType();
 		dialog.setNeutralButton("Submit", new DialogInterface.OnClickListener(){
@@ -112,8 +112,35 @@ public class LoanHelper
 		return new String(bytes);
 	}
 	
-	public void makeListView(String JAName,ListView lv)
+	public void deleteDialog(int position)
 	{
+		String pass;
+		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
+			inflate(R.layout.add_loan,null);
+		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
+		dialog.setTitle("Delete?");
+		dialog.setView(v);
+		pass=((EditText)v.findViewById(R.id.etPass)).
+			getText().toString();
+		((EditText)v.findViewById(R.id.etName)).
+			setVisibility(View.GONE);
+		((EditText)v.findViewById(R.id.etAmount)).
+			setVisibility(View.GONE);
+		((EditText)v.findViewById(R.id.etReason)).
+			setVisibility(View.GONE);
+		((Spinner)v.findViewById(R.id.spinner)).
+		setVisibility(View.GONE);
+		dialog.show();
+	}
+	
+	public void makeListView(String JAName)
+	{
+		ListView lv = null;
+		if(ARRAY_BORROW==JAName){
+			lv=(ListView)((Activity)c).findViewById(R.id.lvBorrow);
+		}else if(ARRAY_LEND==JAName){
+			lv=(ListView)((Activity)c).findViewById(R.id.lvLend);
+		}
 		ArrayList<String> time,name,amount,reason;
 		time=new ArrayList<String>();
 		name=new ArrayList<String>();
@@ -179,11 +206,13 @@ public class LoanHelper
 	private void addToBorrowJsonArray()
 	{
 		writeJsonToFile(ARRAY_BORROW);
+		makeListView(ARRAY_BORROW);
 	}
 
 	private void addToLendJsonArray()
 	{
 		writeJsonToFile(ARRAY_LEND);
+		makeListView(ARRAY_LEND);
 	}
 	
 	public void editMethod()

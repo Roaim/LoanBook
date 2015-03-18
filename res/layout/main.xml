@@ -83,7 +83,7 @@
 		android:textColor="#000000"/>
 
 	<View
-		android:layout_height="10dp"
+		android:layout_height="7dp"
 		android:background="?android:attr/dividerVertical"
 		android:layout_width="match_parent"
 		android:layout_below="@id/mainTextView4"
@@ -92,7 +92,7 @@
 	<View
 		android:layout_height="match_parent"
 		android:background="?android:attr/dividerHorizontal"
-		android:layout_width="2dp"
+		android:layout_width="3dp"
 		android:id="@+id/mainView3"
 		android:layout_below="@id/mainView2"
 		android:layout_centerHorizontal="true"/>
@@ -129,7 +129,7 @@
 		android:layout_below="@id/mainTextView5"
 		android:layout_alignParentLeft="true"
 		android:layout_toStartOf="@id/mainView3"
-		android:dividerHeight="5dp"
+		android:dividerHeight="3dp"
 		android:id="@+id/lvBorrow"/>
 
 	<ListView
@@ -138,7 +138,7 @@
 		android:layout_below="@id/mainTextView6"
 		android:layout_alignParentRight="true"
 		android:layout_toEndOf="@id/mainView3"
-		android:dividerHeight="5dp"
+		android:dividerHeight="3dp"
 		android:id="@+id/lvLend"/>
 
 </RelativeLayout>

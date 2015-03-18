@@ -33,9 +33,54 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
 		initialize();
 		createNewJsonFile();
-		lHelper.makeListView(LoanHelper.ARRAY_BORROW,lvBorrow);
-		lHelper.makeListView(LoanHelper.ARRAY_LEND,lvLend);
+		lHelper.makeListView(LoanHelper.ARRAY_BORROW);
+		lHelper.makeListView(LoanHelper.ARRAY_LEND);
+		borrowItemClick();
+		lendItemClick();
+		
     }
+	
+	private void lendItemClick()
+	{
+		lvLend.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+				@Override
+				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+					lHelper.deleteDialog(p3);
+				}
+			});
+		lvLend.setOnItemLongClickListener(new ListView.OnItemLongClickListener(){
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+					// TODO: Implement this method
+					return false;
+				}
+			});
+	}
+
+	private void borrowItemClick()
+	{
+		lvBorrow.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+				@Override
+				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+					// TODO: Implement this method
+				}
+			});
+		lvBorrow.setOnItemLongClickListener(new ListView.OnItemLongClickListener(){
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+					// TODO: Implement this method
+					return false;
+				}
+			});
+	}
 
 	private void createNewJsonFile()
 	{
