@@ -23,6 +23,7 @@ public class LoanHelper
 	public static final int TOAST_SHORT=0;
 	public static final int EDIT=0;
 	public static final int ADD=1;
+	public static final int DELETE=2;
 	public static final int BORROW=1;
 	public static final int LEND=0;
 	////////////////////////////////////////
@@ -112,16 +113,14 @@ public class LoanHelper
 		return new String(bytes);
 	}
 	
-	public void deleteDialog(int position)
+	public void deleteDialog(final String Jarray,int Position)
 	{
-		String pass;
+		this.position=Position;
 		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
 			inflate(R.layout.add_loan,null);
 		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
 		dialog.setTitle("Delete?");
 		dialog.setView(v);
-		pass=((EditText)v.findViewById(R.id.etPass)).
-			getText().toString();
 		((EditText)v.findViewById(R.id.etName)).
 			setVisibility(View.GONE);
 		((EditText)v.findViewById(R.id.etAmount)).
@@ -130,7 +129,43 @@ public class LoanHelper
 			setVisibility(View.GONE);
 		((Spinner)v.findViewById(R.id.spinner)).
 		setVisibility(View.GONE);
+		dialog.setNeutralButton("Delete", new DialogInterface.OnClickListener(){
+
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					String pass=((EditText)v.findViewById(R.id.etPass)).
+						getText().toString();
+					if(pass.equalsIgnoreCase(PASSWORD)){
+						modify(DELETE,Jarray);
+					} else{
+						makeToast("Wrong password|",TOAST_SHORT);
+					}
+				}
+			});
 		dialog.show();
+	}
+	
+	public void modify(int mode, String JARRAY)
+	{
+			try{
+			JSONObject jo=new JSONObject(ReadFromFile());
+			JSONArray ja=jo.optJSONArray(JARRAY);
+			JSONArray jaMod=new JSONArray();
+			for(int i=0;i<ja.length();i++){
+				if(i!=position){
+					jaMod.put(ja.get(i));
+				} else if(mode==EDIT){
+					//DO SOMETHING
+				}
+			}
+			jo.put(JARRAY,jaMod);
+			writeToFile(jo);
+			makeListView(JARRAY);
+			}catch (Exception e){
+				e.printStackTrace();
+				makeToast(e.toString(),TOAST_SHORT);
+			}
 	}
 	
 	public void makeListView(String JAName)

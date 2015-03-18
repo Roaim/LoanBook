@@ -47,7 +47,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
-					lHelper.deleteDialog(p3);
+					lHelper.deleteDialog(LoanHelper.ARRAY_LEND,p3);
 				}
 			});
 		lvLend.setOnItemLongClickListener(new ListView.OnItemLongClickListener(){
@@ -68,7 +68,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
-					// TODO: Implement this method
+					lHelper.deleteDialog(LoanHelper.ARRAY_BORROW,p3);
 				}
 			});
 		lvBorrow.setOnItemLongClickListener(new ListView.OnItemLongClickListener(){
