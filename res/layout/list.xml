@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:gravity="center">
+
+	<View
+		android:layout_height="1dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Date and Time"
+		android:layout_width="match_parent"
+		android:gravity="right|center"
+		android:paddingRight="7dp"
+		android:paddingLeft="7dp"
+		android:id="@+id/tvTime"
+		android:textColor="#3D3837"/>
+
+	<View
+		android:layout_height="1dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Name"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:typeface="serif"
+		android:textSize="17sp"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:id="@+id/tvName"
+		android:textColor="#000000"/>
+
+	<View
+		android:layout_height="1dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Amount"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:textSize="17sp"
+		android:typeface="serif"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:id="@+id/tvAmount"
+		android:textColor="#000000"
+		android:textStyle="bold"/>
+
+	<View
+		android:layout_height="1dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Reason"
+		android:layout_width="match_parent"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:typeface="serif"
+		android:textSize="14sp"
+		android:gravity="left|center"
+		android:id="@+id/tvReason"
+		android:textColor="#424242"/>
+
+	<View
+		android:layout_height="1dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"/>
+
+</LinearLayout>
+
