@@ -19,7 +19,8 @@
 		android:paddingRight="7dp"
 		android:paddingLeft="7dp"
 		android:id="@+id/tvTime"
-		android:textColor="#3D3837"/>
+		android:textColor="#3D3837"
+		android:textSize="12sp"/>
 
 	<View
 		android:layout_height="1dp"
