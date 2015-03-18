@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	style="@style/AppTheme">
+
+	<View
+		android:layout_height="3dp"
+		android:background="?android:attr/dividerVertical"
+		android:layout_width="match_parent"
+		android:id="@+id/hhhhView1"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Total Borrow"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/hhhhView1"
+		android:textStyle="bold"
+		android:layout_marginLeft="5dp"
+		android:id="@+id/hhhhTextView1"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text=":"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/hhhhView1"
+		android:layout_toRightOf="@id/hhhhTextView1"
+		android:textStyle="bold"
+		android:layout_marginLeft="2dp"
+		android:layout_marginRight="4dp"
+		android:id="@+id/hhhhTextView2"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/hhhhView1"
+		android:layout_toRightOf="@id/hhhhTextView2"
+		android:id="@+id/tvTotalBorrow"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="TK"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/hhhhView1"
+		android:layout_toRightOf="@id/tvTotalBorrow"
+		android:layout_marginLeft="2dp"/>
+
+</RelativeLayout>
+
