@@ -143,7 +143,7 @@ public class LoanHelper
 		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
 			inflate(R.layout.add_loan,null);
 		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
-		dialog.setTitle("Delete: "+(String)av.getItemAtPosition(Position)+"?");
+		dialog.setTitle("Paid: "+(String)av.getItemAtPosition(Position)+"?");
 		dialog.setView(v);
 		((EditText)v.findViewById(R.id.etName)).
 			setVisibility(View.GONE);
