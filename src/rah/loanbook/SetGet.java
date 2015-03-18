@@ -11,7 +11,7 @@ public class SetGet
 	public String getTime()
 	{
 		Calendar calendar=Calendar.getInstance();
-		SimpleDateFormat sdf=new SimpleDateFormat("dd/MMM/yyyy - hh:mm:ss a");
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MMM/yyyy - hh:mm a");
 		time=sdf.format(calendar.getTime());
 		return time;
 	}

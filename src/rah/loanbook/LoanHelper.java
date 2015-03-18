@@ -13,6 +13,7 @@ public class LoanHelper
 {
 	Context c;
 	View v;
+	AdapterView av;
 	SetGet sg=new SetGet();
 	
 	int loanType;
@@ -50,7 +51,12 @@ public class LoanHelper
 		return this.loanType;
 	}
 	
-	public void alertDialog(final int mode,final int Position)
+	public void setAdapterView(AdapterView adapterView)
+	{
+		this.av=adapterView;
+	}
+	
+	public void alertDialog(final int mode,final int Position,final String JSArray)
 	{
 		this.position=Position;
 		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
@@ -58,6 +64,23 @@ public class LoanHelper
 		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
 		dialog.setTitle("Add new");
 		dialog.setView(v);
+		if(mode==EDIT){
+			dialog.setTitle("Edit: "+(String)av.getItemAtPosition(Position)+"?");
+			((Spinner)v.findViewById(R.id.spinner)).setVisibility(View.GONE);
+			try{
+			JSONArray ja=new JSONObject(ReadFromFile()).optJSONArray(JSArray);
+			((EditText)v.findViewById(R.id.etName)).
+				setText(ja.getJSONObject(Position).optString(NAME_JO).toString());
+			((EditText)v.findViewById(R.id.etAmount)).
+				setText(ja.getJSONObject(Position).optString(AMOUNT_JO).toString());
+			((EditText)v.findViewById(R.id.etReason)).
+				setText(ja.getJSONObject(Position).optString(REASON_JO).toString());
+				} catch (Exception e){
+					e.printStackTrace();
+					makeToast(e.toString(),TOAST_SHORT);
+				}
+			
+			}
 		loanType();
 		dialog.setNeutralButton("Submit", new DialogInterface.OnClickListener(){
 
@@ -79,14 +102,15 @@ public class LoanHelper
 					makeToast("Submitted",TOAST_SHORT);
 					if(mode==ADD){
 						addMethod();
-					} else if (mode==EDIT){
-						editMethod();
+					} else if (mode==EDIT){				
+						editMethod(JSArray);
 					}
 					}else{makeToast("Wrong password",TOAST_SHORT);}
 					} catch (Exception e){
 						e.printStackTrace();
 						makeToast("Error: "+e.toString(),TOAST_SHORT);
 					}
+					setTotalLoan();
 				}
 			});
 		dialog.show();	
@@ -119,7 +143,7 @@ public class LoanHelper
 		v=((LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).
 			inflate(R.layout.add_loan,null);
 		AlertDialog.Builder dialog=new AlertDialog.Builder(c);
-		dialog.setTitle("Delete?");
+		dialog.setTitle("Delete: "+(String)av.getItemAtPosition(Position)+"?");
 		dialog.setView(v);
 		((EditText)v.findViewById(R.id.etName)).
 			setVisibility(View.GONE);
@@ -141,6 +165,7 @@ public class LoanHelper
 					} else{
 						makeToast("Wrong password|",TOAST_SHORT);
 					}
+					setTotalLoan();
 				}
 			});
 		dialog.show();
@@ -156,7 +181,12 @@ public class LoanHelper
 				if(i!=position){
 					jaMod.put(ja.get(i));
 				} else if(mode==EDIT){
-					//DO SOMETHING
+						JSONObject nJO=new JSONObject();
+						nJO.put(TIME_JO,sg.getTime());
+						nJO.put(NAME_JO,sg.getName());
+						nJO.put(AMOUNT_JO,sg.getAmount());
+						nJO.put(REASON_JO,sg.getReason());
+						jaMod.put(nJO);
 				}
 			}
 			jo.put(JARRAY,jaMod);
@@ -250,23 +280,23 @@ public class LoanHelper
 		makeListView(ARRAY_LEND);
 	}
 	
-	public void editMethod()
+	public void editMethod(String ja)
 	{
-		if(getLoanType()==LEND){
+		if(ja==ARRAY_LEND){
 			editLendJsonArray();
-		} else if(getLoanType()==BORROW){
+		} else if(ja==ARRAY_BORROW){
 			editBorrowJsonArray();
 		}
 	}
 
 	private void editBorrowJsonArray()
 	{
-		// TODO: Implement this method
+		modify(EDIT,ARRAY_BORROW);
 	}
 
 	private void editLendJsonArray()
 	{
-		// TODO: Implement this method
+		modify(EDIT,ARRAY_LEND);
 	}
 	
 	public void loanType()
@@ -288,6 +318,41 @@ public class LoanHelper
 				}
 			});
 	}
+	
+	
+	public int totalLoan(String JA)
+	{
+		int Total[];
+		int TotalLoan=0;
+		try
+		{
+			JSONObject jo=new JSONObject(ReadFromFile());
+			JSONArray ja=jo.optJSONArray(JA);
+			Total=new int[ja.length()];
+			for(int i=0;i<ja.length();i++){	
+				if(!ja.getJSONObject(i).optString(LoanHelper.AMOUNT_JO).toString().equalsIgnoreCase("")){
+					Total[i]= Integer.valueOf(ja.getJSONObject(i).optString(LoanHelper.AMOUNT_JO).toString());
+					} else{
+						Total[i]=0;
+					}
+			}
+			for(int totalLoan:Total){
+				TotalLoan+=totalLoan;
+			}
+		}
+		catch (Exception e)
+		{e.printStackTrace(); makeToast(e.toString(),LoanHelper.TOAST_SHORT); }
+		return TotalLoan;
+	}
+
+	public void setTotalLoan()
+	{
+		TextView tvTotalBorrow=(TextView)((Activity)c).findViewById(R.id.tvTotalBorrow);
+		TextView tvTotalLend=(TextView)((Activity)c).findViewById(R.id.tvTotalLend);
+		tvTotalBorrow.setText(String.valueOf(totalLoan(ARRAY_BORROW)));
+		tvTotalLend.setText(String.valueOf(totalLoan(ARRAY_LEND)));
+	}
+	
 	
 	public void makeToast(String message,int Mode)
 	{

@@ -24,6 +24,7 @@ public class MainActivity extends Activity
 		lvLend=(ListView) findViewById(R.id.lvLend);
 		tvTotalBorrow=(TextView) findViewById(R.id.tvTotalBorrow);
 		tvTotalLend=(TextView) findViewById(R.id.tvTotalLend);
+		lHelper.setTotalLoan();
 	}
 	
     @Override
@@ -47,6 +48,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
+					lHelper.setAdapterView(p1);
 					lHelper.deleteDialog(LoanHelper.ARRAY_LEND,p3);
 				}
 			});
@@ -55,7 +57,8 @@ public class MainActivity extends Activity
 				@Override
 				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
-					// TODO: Implement this method
+					lHelper.setAdapterView(p1);
+					lHelper.alertDialog(LoanHelper.EDIT,p3,LoanHelper.ARRAY_LEND);
 					return false;
 				}
 			});
@@ -68,6 +71,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
+					lHelper.setAdapterView(p1);
 					lHelper.deleteDialog(LoanHelper.ARRAY_BORROW,p3);
 				}
 			});
@@ -76,7 +80,8 @@ public class MainActivity extends Activity
 				@Override
 				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
-					// TODO: Implement this method
+					lHelper.setAdapterView(p1);
+					lHelper.alertDialog(LoanHelper.EDIT,p3,LoanHelper.ARRAY_BORROW);
 					return false;
 				}
 			});
@@ -110,7 +115,7 @@ public class MainActivity extends Activity
 				@Override
 				public boolean onMenuItemClick(MenuItem p1)
 				{
-					lHelper.alertDialog(LoanHelper.ADD,555);
+					lHelper.alertDialog(LoanHelper.ADD,555,"");
 					return false;
 				}
 			});
@@ -118,5 +123,6 @@ public class MainActivity extends Activity
 	}
 	
 	/************************************************************/
+	
 	
 }
