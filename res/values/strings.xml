@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">LoanBook</string>
+	<string name="banner_ad_unit_id">ca-app-pub-8068706490491789/7590412555</string>
 	<string-array name="spinner">
 		<item>Lending to</item>
 		<item>Borrowing from</item>
