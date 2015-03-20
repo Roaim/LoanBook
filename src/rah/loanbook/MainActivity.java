@@ -8,6 +8,7 @@ import android.content.*;
 import java.io.*;
 import org.json.*;
 import java.util.*;
+import com.google.android.gms.ads.*;
 
 
 public class MainActivity extends Activity
@@ -102,6 +103,12 @@ public class MainActivity extends Activity
 			e.printStackTrace();
 			lHelper.makeToast(e.toString(),LoanHelper.TOAST_SHORT);
 		}
+	}
+	
+	public void loadAdd(){
+		AdView adView = (AdView)findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder().addTestDevice("F59A4ABF15A40E22038CCFC11D986B06").addTestDevice("f9ddfcd17af5d6e1").build();
+		adView.loadAd(adRequest);
 	}
 	
 	/************************************************************/
