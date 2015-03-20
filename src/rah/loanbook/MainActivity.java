@@ -26,6 +26,7 @@ public class MainActivity extends Activity
 		tvTotalBorrow=(TextView) findViewById(R.id.tvTotalBorrow);
 		tvTotalLend=(TextView) findViewById(R.id.tvTotalLend);
 		lHelper.setTotalLoan();
+		loadAd();
 	}
 	
     @Override
@@ -105,7 +106,7 @@ public class MainActivity extends Activity
 		}
 	}
 	
-	public void loadAdd(){
+	public void loadAd(){
 		AdView adView = (AdView)findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder().addTestDevice("F59A4ABF15A40E22038CCFC11D986B06").addTestDevice("f9ddfcd17af5d6e1").build();
 		adView.loadAd(adRequest);
