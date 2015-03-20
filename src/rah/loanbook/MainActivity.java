@@ -108,7 +108,7 @@ public class MainActivity extends Activity
 	
 	public void loadAd(){
 		AdView adView = (AdView)findViewById(R.id.adView);
-		AdRequest adRequest = new AdRequest.Builder().addTestDevice("F59A4ABF15A40E22038CCFC11D986B06").addTestDevice("f9ddfcd17af5d6e1").build();
+		AdRequest adRequest = new AdRequest.Builder().addTestDevice("F59A4ABF15A40E22038CCFC11D986B06").addTestDevice("D7FA81B57C294D600FE6EC41014B2248").build();
 		adView.loadAd(adRequest);
 	}
 	
