@@ -127,6 +127,15 @@ public class MainActivity extends Activity
 					return false;
 				}
 			});
+		menu.getItem(1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+
+				@Override
+				public boolean onMenuItemClick(MenuItem p1)
+				{
+					
+					return false;
+				}
+			});
 		return super.onCreateOptionsMenu(menu);
 	}
 	
