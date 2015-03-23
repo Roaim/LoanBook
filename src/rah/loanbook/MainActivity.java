@@ -113,11 +113,22 @@ public class MainActivity extends Activity
 	}
 	
 	/************************************************************/
+	File visibility;
+	String fileVis="visibility";
+	String HIDE="Hide";
+	String SHOW="Show";
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		menu.add("Add").setIcon(R.drawable.ic_action_new).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		visibility=new File(getExternalFilesDir(null),fileVis);
+		if(!visibility.exists()){
+			writeToFile(visibility,HIDE);
+		}
+		if(readFromFile(visibility).equals(HIDE)){
+		}
+		
 		menu.getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
 
 				@Override
@@ -128,8 +139,42 @@ public class MainActivity extends Activity
 				}
 			});
 		return super.onCreateOptionsMenu(menu);
+		
+		
 	}
 	
+	String readFromFile(File file){
+		StringBuffer sbff=new StringBuffer();
+		try
+		{
+			FileInputStream fis=new FileInputStream(file);
+			InputStreamReader isr=new InputStreamReader(fis);
+			BufferedReader buff=new BufferedReader(isr);
+			String line=buff.readLine();
+			while(line!=null){
+				sbff.append(line);
+				line=buff.readLine();
+			}
+			fis.close();
+		}
+		catch (Exception e)
+		{makeToast(e.toString());}
+		return sbff.toString();
+	}
+	
+	void writeToFile(File file,String string){
+		try
+		{
+			FileOutputStream fos=new FileOutputStream(file);
+			fos.write(string.getBytes());
+			fos.close();
+		}
+		catch (Exception e)
+		{makeToast(e.toString());}
+	}
+	void makeToast(String msg){
+		Toast.makeText(c,msg,Toast.LENGTH_LONG).show();
+	}
 	/************************************************************/
 	
 	
